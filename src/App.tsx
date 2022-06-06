@@ -1,45 +1,59 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState } from "react";
+import expand from "emmet";
+import { ErrorBoundary } from "react-error-boundary";
+import { EmmetError } from "./component/error";
+import { ConvertEmmet } from "./component/convertEmmet";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [sourceText, setsourceText] = useState<string>("");
+  const handleChange = (e: any) => {
+    setsourceText(() => e.target.value);
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
+    <div>
+      <header className="border-b-2 border-black p-2">
+        <h1 className="text-xl font-bold">Emmet Converter</h1>
       </header>
+      <div className="max-w-screen-sm  m-auto ">
+        <div className="flex space-y-2 px-2 flex-col">
+          <h2 className="text-xl font-bold">入力欄</h2>
+          <textarea
+            placeholder="入力欄"
+            rows={20}
+            className="border-2 p-2 font-mono          form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        text-gray-900
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+"
+            value={sourceText}
+            onChange={handleChange}
+          >
+          </textarea>
+          <h2 className="text-xl font-bold">変換後</h2>
+          <ErrorBoundary
+            FallbackComponent={EmmetError}
+            onReset={() => {
+              // reset the state of your app so the error doesn't happen again
+            }}
+            resetKeys={[sourceText]}
+          >
+            <ConvertEmmet emmetText={sourceText} />
+          </ErrorBoundary>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
