@@ -1,5 +1,4 @@
 import { useState } from "react";
-import expand from "emmet";
 import { ErrorBoundary } from "react-error-boundary";
 import { EmmetError } from "./component/error";
 import { ConvertEmmet } from "./component/convertEmmet";
@@ -41,7 +40,7 @@ function App() {
           >
           </textarea>
           <h2 className="text-xl font-bold">変換後</h2>
-          <div className="border-2 p-2 bg-blue-100">
+          <div>
             <ErrorBoundary
               FallbackComponent={EmmetError}
               onReset={() => {
