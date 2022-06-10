@@ -41,15 +41,17 @@ function App() {
           >
           </textarea>
           <h2 className="text-xl font-bold">変換後</h2>
-          <ErrorBoundary
-            FallbackComponent={EmmetError}
-            onReset={() => {
-              // reset the state of your app so the error doesn't happen again
-            }}
-            resetKeys={[sourceText]}
-          >
-            <ConvertEmmet emmetText={sourceText} />
-          </ErrorBoundary>
+          <div className="border-2 p-2 bg-blue-100">
+            <ErrorBoundary
+              FallbackComponent={EmmetError}
+              onReset={() => {
+                // reset the state of your app so the error doesn't happen again
+              }}
+              resetKeys={[sourceText]}
+            >
+              <ConvertEmmet emmetText={sourceText} />
+            </ErrorBoundary>
+          </div>
         </div>
       </div>
     </div>
