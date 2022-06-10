@@ -7,14 +7,14 @@ type ConvertEmmetType = {
   emmetText: string;
 };
 export const ConvertEmmet: React.FC<ConvertEmmetType> = (props) => {
-  const [EmmetText, setEmmetText] = useAtom(EmmetTextLogAtom);
+  const [, setEmmetText] = useAtom(EmmetTextLogAtom);
 
   const AddEmmetText = (text: string) => {
     const NewEmmetText: EmmetTextLogAtomType = {
       EmmetText: text,
       CreatedAt: new Date(),
     };
-    setEmmetText((prev) => [...prev, NewEmmetText]);
+    setEmmetText((prev) => [NewEmmetText, ...prev]);
   };
   return (
     <div>

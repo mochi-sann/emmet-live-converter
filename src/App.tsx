@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { EmmetError } from "./component/error";
 import { ConvertEmmet } from "./component/convertEmmet";
+import { EmmetLog } from "./component/EmmetLog";
 
 function App() {
   const [sourceText, setsourceText] = useState<string>("");
@@ -50,6 +51,7 @@ function App() {
             >
               <ConvertEmmet emmetText={sourceText} />
             </ErrorBoundary>
+            <EmmetLog />
           </div>
         </div>
       </div>
