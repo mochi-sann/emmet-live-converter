@@ -3,6 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { EmmetError } from "./component/error";
 import { ConvertEmmet } from "./component/convertEmmet";
 import { EmmetLog } from "./component/EmmetLog";
+import ViewSource from "./component/ViewSource";
 
 function App() {
   const [sourceText, setsourceText] = useState<string>("");
@@ -12,7 +13,8 @@ function App() {
 
   return (
     <div>
-      <header className="border-b-2 border-black p-2">
+      <ViewSource />
+      <header className="border-b-2 border-black p-2 flex ">
         <h1 className="text-xl font-bold">Emmet Converter</h1>
       </header>
       <div className="max-w-screen-sm  m-auto ">
