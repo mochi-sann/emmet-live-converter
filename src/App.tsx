@@ -22,7 +22,7 @@ function App() {
           <h2 className="text-xl font-bold">入力欄</h2>
           <textarea
             placeholder="入力欄"
-            rows={20}
+            rows={2}
             className="textarea textarea-bordered font-mono  "
             value={sourceText}
             onChange={handleChange}
