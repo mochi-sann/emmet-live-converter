@@ -2,6 +2,7 @@ import { useAtom } from "jotai";
 import React from "react";
 import { EmmetTextLogAtom } from "../lib/jotai";
 import expand from "emmet";
+import { CodeView } from "./CodeView";
 
 export const EmmetLog: React.FC = () => {
   const [EmmetText] = useAtom(EmmetTextLogAtom);
@@ -15,8 +16,8 @@ export const EmmetLog: React.FC = () => {
             <pre>{value.EmmetText}</pre>
             <details>
               <summary className="cursor-pointer">変換後</summary>
-              <div className="border-2 p-2 bg-blue-100">
-                <pre>{expand(value.EmmetText)}</pre>
+              <div className="p-1">
+                <CodeView CodeText={value.EmmetText} />
               </div>
             </details>
           </div>

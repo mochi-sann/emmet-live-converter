@@ -23,21 +23,7 @@ function App() {
           <textarea
             placeholder="入力欄"
             rows={20}
-            className="border-2 p-2 font-mono          form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        text-gray-900
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-"
+            className="textarea textarea-bordered font-mono  "
             value={sourceText}
             onChange={handleChange}
           >
