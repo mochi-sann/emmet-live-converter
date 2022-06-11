@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import expand from "emmet";
 import { useAtom } from "jotai";
 import { EmmetTextLogAtom, EmmetTextLogAtomType } from "../lib/jotai";
+import classNames from "classnames";
 
 type ConvertEmmetType = {
   emmetText: string;
@@ -9,6 +10,7 @@ type ConvertEmmetType = {
 export const ConvertEmmet: React.FC<ConvertEmmetType> = (props) => {
   const [, setEmmetText] = useAtom(EmmetTextLogAtom);
 
+  const BtnDisable = props.emmetText.length == 0;
   const AddEmmetText = (text: string) => {
     const NewEmmetText: EmmetTextLogAtomType = {
       EmmetText: text,
@@ -16,11 +18,16 @@ export const ConvertEmmet: React.FC<ConvertEmmetType> = (props) => {
     };
     setEmmetText((prev) => [NewEmmetText, ...prev]);
   };
+
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <button
         onClick={() => AddEmmetText(props.emmetText)}
-        className="mb-2 w-full inline-block px-6 py-2.5 bg-blue-600 text-white  text-lg leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800  transition duration-150 ease-in-out"
+        disabled={BtnDisable}
+        className={classNames("btn", "w-full ", {
+          "btn-disabled": BtnDisable,
+          "btn-active": !BtnDisable,
+        })}
       >
         保存する
       </button>
