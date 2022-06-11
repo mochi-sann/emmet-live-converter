@@ -3,6 +3,7 @@ import expand from "emmet";
 import { useAtom } from "jotai";
 import { EmmetTextLogAtom, EmmetTextLogAtomType } from "../lib/jotai";
 import classNames from "classnames";
+import { CodeView } from "./CodeView";
 
 type ConvertEmmetType = {
   emmetText: string;
@@ -31,9 +32,7 @@ export const ConvertEmmet: React.FC<ConvertEmmetType> = (props) => {
       >
         保存する
       </button>
-      <div className="border-2 p-2 bg-blue-100 min-h-[100px]">
-        <pre>{expand(props.emmetText)}</pre>
-      </div>
+      <CodeView CodeText={props.emmetText} />
     </div>
   );
 };
